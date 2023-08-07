@@ -1,0 +1,7 @@
+namespace "testing"
+
+record Vector3 {
+    x: VarInt;
+    y: VarInt;
+    z: VarInt;
+}

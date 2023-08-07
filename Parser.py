@@ -298,6 +298,9 @@ class Parser:
 			if isPacket and (record.getField("packetID") is None or record.getField("packetID").value is None):
 				self.error("Packets must have a packetID field with a value.")
 
+			if isPacket:
+				record.setPacketID(record.getField("packetID").value)
+
 			self.expect(TokenType.RCURLY)
 			if isPacket:
 				self.currentns.addPacket(self.file, record)
