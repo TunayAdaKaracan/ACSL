@@ -5,3 +5,12 @@ record Vector3 {
     y: VarInt;
     z: VarInt;
 }
+
+record Rectangle {
+    x: int = 0;
+    y: int = 0;
+}
+
+packet PlayNote {
+    packetID: VarInt = 0x04;
+}

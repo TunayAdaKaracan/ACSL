@@ -21,10 +21,17 @@ for key, val in tokens.items():
 
 for ns in parser.namespaces:
     print("Namespace - "+ns.path)
+    print("Records====:")
     for record in ns.records:
         print("Record Name: "+record.name +" Metatags: "+", ".join(record.metatags))
         for field in record.fields:
             print(field)
+    print("Packets=====:")
+    for record in ns.packets:
+        print("Packet Name: "+record.name +"("+str(record.packetID)+")"+" Metatags: "+", ".join(record.metatags))
+        for field in record.fields:
+            print(field)
+    print("Enums======:")
     for enum in ns.enums:
         print("Enum Name: "+enum.name)
         for value in enum.values:

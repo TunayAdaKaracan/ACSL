@@ -41,6 +41,27 @@ class Namespace:
 			self.structs[file] = StructHolder()
 		self.structs[file].addPacket(value)
 
+	@property
+	def enums(self):
+		allEnums = []
+		for structHolder in self.structs.values():
+			allEnums.extend(structHolder.enums)
+		return allEnums
+
+	@property
+	def records(self):
+		records = []
+		for structHolder in self.structs.values():
+			records.extend(structHolder.records)
+		return records
+
+	@property
+	def packets(self):
+		packets = []
+		for structHolder in self.structs.values():
+			packets.extend(structHolder.packets)
+		return packets
+
 
 class Enum:
 	def __init__(self, name):
@@ -359,5 +380,7 @@ class Parser:
 			elif tok.type == TokenType.EOF:
 				if len(self.metatag) > 0:
 					self.error("Unknown metatag")
+			else:
+				self.error("Unknown token.")
 		if self.currentns not in self.namespaces:
 			self.namespaces.append(self.currentns)
